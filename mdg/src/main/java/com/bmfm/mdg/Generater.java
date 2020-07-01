@@ -3,7 +3,7 @@ package com.bmfm.mdg;
 import com.bmfm.mdg.config.Config;
 import com.bmfm.mdg.entity.TableEntity;
 import com.bmfm.mdg.utils.ReadUtil;
-import com.bmfm.mdg.utils.TableUtil;
+import com.bmfm.mdg.core.TableService;
 import com.bmfm.mdg.utils.WriteUtil;
 
 /**
@@ -21,7 +21,7 @@ public class Generater {
 
     public void generate() throws Exception {
         ReadUtil.readConfig();
-        TableEntity table = TableUtil.sql2Entity(Config.getSql());
+        TableEntity table = TableService.sql2Entity(Config.getSql());
         WriteUtil.write(table);
     }
 }

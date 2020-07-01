@@ -1,9 +1,10 @@
-package com.bmfm.mdg.out.dao;
+package com.bmfm.mdg.core.out;
 
 import com.bmfm.mdg.config.Config;
 import com.bmfm.mdg.entity.ColumnEntity;
+import com.bmfm.mdg.entity.MyStringBuilder;
 import com.bmfm.mdg.entity.TableEntity;
-import com.bmfm.mdg.out.MapperOut;
+import com.bmfm.mdg.core.MapperOut;
 
 /**
  * @author jikun.zhu
@@ -18,33 +19,33 @@ public class InsertMapperOut extends MapperOut {
 
     @Override
     public String outMapper(TableEntity table) {
-        StringBuilder sb = new StringBuilder(128);
-        sb.append("  <insert id=\"insert\" parameterType=\"").append(Config.getDOPackagePath()).append(".").append(table.getName()).append("\">").append(NEXT_LINE);
+        MyStringBuilder sb = new MyStringBuilder(128);
+        sb.append("  <insert id=\"insert\" parameterType=\"").append(Config.getDOPackagePath()).append(".").append(table.getName()).appendNext("\">");
         sb.append("    insert into ").append(table.getTableName()).append(" (");
         for (int i = 0; i < table.getColumns().size(); i++) {
             ColumnEntity column = table.getColumns().get(i);
             if (i % 3 == 0) {
-                sb.append(NEXT_LINE).append("      ");
+                sb.appendPre("      ");
             }
             sb.append(column.getColumn());
             if (i != table.getColumns().size() -1) {
                 sb.append(", ");
             }
         }
-        sb.append(NEXT_LINE).append("      )");
-        sb.append(NEXT_LINE).append("    values (");
+        sb.appendPre("      )");
+        sb.appendPre("    values (");
         for (int i = 0; i < table.getColumns().size(); i++) {
             ColumnEntity column = table.getColumns().get(i);
             if (i % 3 == 0) {
-                sb.append(NEXT_LINE).append("      ");
+                sb.appendPre("      ");
             }
             sb.append("#{").append(column.getProperty()).append(",jdbcType=").append(column.getJdbcType()).append("}");
             if (i != table.getColumns().size() -1) {
                 sb.append(", ");
             }
         }
-        sb.append(NEXT_LINE).append("      )");
-        sb.append(NEXT_LINE).append("  </insert>");
+        sb.appendPre("      )");
+        sb.appendPre("  </insert>");
         return sb.toString();
     }
 

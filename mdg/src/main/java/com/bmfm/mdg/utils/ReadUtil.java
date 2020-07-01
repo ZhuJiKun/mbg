@@ -15,10 +15,9 @@ import java.util.List;
  */
 public class ReadUtil {
 
-    private final static String tag = "分割线";
+    private final static String tag = "---分割线,下面直接贴create语句,越标准越好---";
 
     public static void readConfig() throws Exception {
-
         InputStream stream = Thread.currentThread().getClass().getResourceAsStream("/mbg.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
         String line;
@@ -29,6 +28,11 @@ public class ReadUtil {
         boolean flag = false;
 
         while ((line = reader.readLine()) != null) {
+
+            if (line.length() == 0) {
+                continue;
+            }
+
             if (flag) {
                 sqls.add(line);
                 continue;
@@ -39,9 +43,10 @@ public class ReadUtil {
                 continue;
             }
 
-            configs.add(line);
+            if (!line.startsWith("#")) {
+                configs.add(line);
+            }
         }
-
 
         Config.setSql(sqls);
 
@@ -57,10 +62,16 @@ public class ReadUtil {
                     break;
                 case "DOPackagePath":
                     Config.setDOPackagePath(ss[1]);
+                    break;
                 case "daoPackagePath":
                     Config.setDaoPackagePath(ss[1]);
+                    break;
                 case "outPath":
                     Config.setOutPath(ss[1]);
+                    break;
+                case "author":
+                    Config.setAuthor(ss[1]);
+                    break;
                 default:
                     break;
             }

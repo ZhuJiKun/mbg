@@ -1,8 +1,25 @@
+#是否驼峰命名
 formatHump=true
-DOPackagePath=com.youzan.pay.DO
-daoPackagePath=com.youzan.pay.dao
+
+#输出文件目录
 outPath=/Users/zhujikun/Desktop
-分割线
+
+# 实体的包名称
+DOPackagePath=com.youzan.pay.DO
+
+# dao层的包名称
+daoPackagePath=com.youzan.pay.dao
+
+# 如果需要的话，可以在类上留下自己的名字，背锅专用
+author=jikun.zhu
+
+# 实体的名称，如果为空就是表的名称
+# beanName=DisposeCase
+
+#根据业务需求决定是否采用此设计，不采用，代码中为updateById，以主键编辑， 采用之后，代码中为updateByCaseNo
+#PK=case_no
+
+---分割线,下面直接贴create语句,越标准越好---
 CREATE TABLE `dispose_case` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `case_no` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '案件编号',

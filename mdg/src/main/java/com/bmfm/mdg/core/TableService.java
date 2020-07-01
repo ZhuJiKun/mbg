@@ -1,9 +1,10 @@
-package com.bmfm.mdg.utils;
+package com.bmfm.mdg.core;
 
 import com.bmfm.mdg.config.Config;
 import com.bmfm.mdg.entity.ColumnEntity;
 import com.bmfm.mdg.entity.TableEntity;
 import com.bmfm.mdg.enums.TypeEnum;
+import com.bmfm.mdg.utils.StringUtils;
 
 import java.util.*;
 
@@ -11,23 +12,24 @@ import java.util.*;
  * @author jikun.zhu
  * @date 2020/7/1 11:16 上午
  */
-public class TableUtil {
+public class TableService {
 
-    public static final String SPACE = " ";
-    public static final String EMPTY = "";
-    public static final String LF = "\n";
-    public static final String CR = "\r";
+    private static final String SPACE = " ";
+    private static final String EMPTY = "";
+    private static final String LF = "\n";
+    private static final String CR = "\r";
 
     // 保留关键词
-    public static final Set<String> KEYS = new HashSet<>();
+    private static final Set<String> KEYS = new HashSet<>();
 
     static {
         String str = "CREATE TABLE IF NOT EXISTS KEY UNIQUE PRIMARY";
         KEYS.addAll(Arrays.asList(str.split(SPACE)));
     }
 
+
     // 类型关键词
-    public static final Set<String> TYPE_KEYS = new HashSet<>();
+    private static final Set<String> TYPE_KEYS = new HashSet<>();
     static {
         for (TypeEnum type : TypeEnum.values()) {
             TYPE_KEYS.add(type.getJdbcType());

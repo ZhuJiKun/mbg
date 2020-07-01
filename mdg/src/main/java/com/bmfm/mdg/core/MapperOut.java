@@ -1,5 +1,6 @@
-package com.bmfm.mdg.out;
+package com.bmfm.mdg.core;
 
+import com.bmfm.mdg.core.Out;
 import com.bmfm.mdg.entity.TableEntity;
 
 /**

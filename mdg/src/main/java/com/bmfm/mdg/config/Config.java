@@ -40,6 +40,16 @@ public class Config {
      */
     private String outPath;
 
+    /**
+     * PK
+     */
+    private String PK;
+
+    /**
+     * 作者
+     */
+    private String author;
+
     public static boolean isFormatHump() {
         return config.formatHump;
     }
@@ -86,5 +96,21 @@ public class Config {
 
     public static void setDaoPackagePath(String daoPackagePath) {
         config.daoPackagePath = daoPackagePath;
+    }
+
+    public static String getPK() {
+        return config.PK;
+    }
+
+    public static void setPK(String PK) {
+        config.PK = PK;
+    }
+
+    public static String getAuthor() {
+        return config.author;
+    }
+
+    public static void setAuthor(String author) {
+        config.author = author;
     }
 }

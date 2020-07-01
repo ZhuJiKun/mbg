@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- *
+ * 表
  * @author jikun.zhu
  * @date 2020/7/1 11:11 上午
  */

@@ -1,7 +1,7 @@
 package com.bmfm.mdg.utils;
 
 import com.bmfm.mdg.entity.TableEntity;
-import com.bmfm.mdg.out.OutWriter;
+import com.bmfm.mdg.core.OutWriter;
 
 /**
  * @date 2020/7/1 3:53 下午
